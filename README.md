@@ -14,6 +14,12 @@
 * Migration : rails db:migrate
 * Poupulate Model Data : rails model:populate
 
+#Gem Details
+Faker - For inserting fake data to model
+rails-env-credentials - Enhances Rails credentials for multiple environments
+To Setup your env variables run below command and add your variables into that file
+EDITOR=nano rails env_credentials:edit -e development
+
 # Browser URL Details
 A member’s profile screen showing their
     1. number of wins
