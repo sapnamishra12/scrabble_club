@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact number</th>
+      <th>Created On</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.name %></td>
+        <td><%= member.contact_number %></td>
+        <td><%= ApplicationHelper.readable_date(member.created_at) %></td>
+        <td><%= link_to 'View Profile', member %> | 
+            <%= link_to 'Edit', edit_member_path(member) %>        
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>

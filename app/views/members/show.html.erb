@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @member.contact_number %>
+</p>
+
+<p>
+  <strong>Number Of Wins:</strong>
+  <%= @member.won_matches %>
+</p>
+
+<p>
+  <strong>Number of losses:</strong>
+  <%= @member.lost_matches %>
+</p>
+
+<p>
+  <strong>Average Score:</strong>
+  <%= @member.avg_score %>
+</p>
+
+<p>
+  <strong>Highest Scored Match Details</strong> <br>
+  <% match_details = @member.highest_scored_match_id.present? ? MembersHelper.get_match_details(@member.highest_scored_match_id, @member.id) : {} %>
+  <% if match_details.present? %>
+  	Highest Score : <%= @member.highest_score || 0 %> <br>
+  	Scored On Date: <%= ApplicationHelper.readable_date(match_details["created_at"]) || "" %> <br>
+  	Match Location: <%= match_details["location"] || "" %> <br>
+  	Scored Against: <%= match_details[:against_whom] || "" %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>

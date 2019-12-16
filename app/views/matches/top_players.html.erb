@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Top Players List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player Name</th>
+      <th>Player Average Score</th>
+      <th>Total Matches Played</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.name %></td>
+        <td><%= member.avg_score %></td>
+        <td><%= MembersHelper.total_match_count(member.won_matches, member.lost_matches) %></td>
+        <td><%= link_to 'View Profile', member %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
