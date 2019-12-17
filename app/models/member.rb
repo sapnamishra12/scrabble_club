@@ -15,18 +15,18 @@ class Member < ApplicationRecord
     member = Member.find_by(id: member_id)
   end
 
-  def self.update_won_count winner, winner_score, looser, looser_score
+  def self.update_won_count winner, winner_score, loser, loser_score
     winner_member = Member.get_member(winner)
     winner_member.update_attributes(
       won_matches: winner_member.won_matches+1, 
       total_score: winner_member.total_score+winner_score
       ) if winner_member.present?
 
-    looser_member = Member.get_member(looser)
-    looser_member.update_attributes(
-      lost_matches: looser_member.lost_matches+1, 
-      total_score: looser_member.total_score+looser_score 
-      ) if looser_member.present?
+    loser_member = Member.get_member(loser)
+    loser_member.update_attributes(
+      lost_matches: loser_member.lost_matches+1, 
+      total_score: loser_member.total_score+loser_score 
+      ) if loser_member.present?
   end
 
   def self.update_avg_score member_id
